@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<html>
+<head>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <main class="main-container">
+        <div class="actions">
+            <div class="form1">
+                <form method="POST" asp-controller="Update" asp-action="Insert">
+                    <h4>Update Auction</h4>
+                    <label for="description">Description: </label>
+                    <input type="text" name="description"><br><br>
+                    
+
+                    <button>Submit!</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

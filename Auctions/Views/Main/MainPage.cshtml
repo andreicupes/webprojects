@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Auctions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        $("#updcheck").click(function () {
+            $.get("/Main/GetOthersAuctions",
+                    function(data,status) {
+                        $("#notif").html(data);
+                        if(!alert("\n\n"+data)){window.location.reload();}});
+                        
+            
+        });
+    });
+    window.onload=()=>{
+
+           
+                $.get("/Main/GetAllAuctions",
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".update-button").click(function (event) {
+                            
+                                var idToPass = event.target.id;
+                                
+                                console.log(idToPass);
+                               
+                                document.location = '@Url.Action("Index", "Update")?id='+idToPass;
+                                console.log("clicked it");
+                            
+                        });
+                });
+    
+        };
+        </script>
+</head>
+<body>
+    <div id="notif"></div><br />
+    <h2>Welcome to the Auctions, @Context.Session.GetString("username")</h2>
+    
+    
+    <a href="/Add/"><button type="button">Add Auction</button></a><br /><br />
+    <button type="button"  id="updcheck">Check for updates</button>
+    <p>Auctions List:</p>
+    <div id="maindiv"></div><br />
+    
+</body>
+</html>
