@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Log</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create Log</h1>
+        <p><b>Please fill this form and submit to add the log to the database.</b></p>
+        <form action="addLog.php" method="post">
+            <input type="int" name="id" placeholder="ID:"> <br>
+            <input type="text" name="type" placeholder="Type:"> <br>
+            <input type="text" name="severity" placeholder="Severity:"> <br>
+            <input type="date" name="date" placeholder="Date:"> <br>
+            <input type="text" name="log" placeholder="Log:"> <br>
+            <div class="button_container">
+                <button type="submit">Add Log</button>
+                <button type="reset" onclick="window.location.href='showTable.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

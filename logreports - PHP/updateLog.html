@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Log</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create new Log</h1>
+        <p><b>Please fill this form using an already existing ID and submit to update the log to the database.</b></p>
+
+        <form action="updateLog.php" method="post">
+            <input type="int" name="id" placeholder="ID:"> <br>
+            <input type="text" name="type" placeholder="Type:"> <br>
+            <input type="text" name="severity" placeholder="Severity:"> <br>
+            <input type="date" name="date" placeholder="Date:"> <br>
+            <input type="text" name="log" placeholder="Log:"> <br>
+            <div>
+                <button type="submit">Update Log</button>
+                <button type="reset" onclick="window.location.href='showTable.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

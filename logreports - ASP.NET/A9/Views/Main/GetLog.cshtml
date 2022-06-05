@@ -1,0 +1,156 @@
+﻿
+@*@using X.PagedList
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<A9.Models.LogReport>
+
+
+@{
+    ViewBag.Title = "Logs";
+}
+
+<h2>Logs</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           Id
+        </th>
+        <th>
+           Type
+        </th>
+        <th>
+            Severity
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            UserID
+        </th>
+        <th>
+            Log
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+@if( Model != null){
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Severity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}}
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Logs</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    function checkDelete() {
+        if (confirm('Are you sure you want to delete ?')) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+    <script>
+        $(document).ready(function(){
+            $("#buttona").click(function () {
+                $.get("/Main/GetAllLogs",
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".delete-button").click(function (event) {
+                            if(checkDelete()){
+                            $.post("/Main/DeleteLog", { logId: event.target.id }, function () {
+                                alert("Deleted successfully");
+
+                                $("#buttona").trigger("click");
+                            });}
+                        })
+                });
+            });
+            $("#buttonb").click(function () {
+                $.get("/Main/GetMyLogs",
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".delete-button").click(function (event) {
+                            if(checkDelete()){
+                            $.post("/Main/DeleteLog", { logId: event.target.id }, function () {
+                                alert("Deleted successfully");
+
+                                $("#buttonb").trigger("click");
+                            });}
+                        })
+                });
+            });
+        });
+    </script>
+    <script>
+
+    function filterLogs() {
+  var x = document.getElementById("myInput").value;
+  $(document).ready(function(){
+                $.get("/Main/GetFilteredLogs?s="+x,
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".delete-button").click(function (event) {
+                            if(checkDelete()){
+                            $.post("/Main/DeleteLog", { logId: event.target.id }, function () {
+                                alert("Deleted successfully");
+                            });}
+                        })
+                });
+
+        });
+}
+    </script>
+</head>
+<body>
+
+    <h2>Welcome to the LogReports, @Context.Session.GetString("username")</h2>
+    
+    <input id="buttona" type="button" value="Get all logs" />
+    <br /><br />
+    <input id="buttonb" type="button" value="Get my logs" />
+    <br /><br />
+    <a href="/Add/"><button type="button">Add Log</button></a><br /><br />
+    <input id="myInput" type="text" placeholder="Filter by type/severity" oninput="filterLogs()"/>
+    <br /><br />
+    <p>Logs List:</p>
+    <div id="maindiv"></div><br />
+</body>
+</html>
+

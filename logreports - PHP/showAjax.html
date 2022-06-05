@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="showAjax.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <p><b>Start typing a type/severity in the input field below:</b></p>
+        <form action="">
+            <label for="fname">type/severity:</label>
+            <input type="text" id="fname" name="fname" onkeyup="showHint(this.value)">
+        </form>
+        <span id="txtHint"></span>
+        <div class="logs1">
+            <div class="logs-container1">
+                <div>
+                    <br>
+                    <button class="goleft"> &#8592; </button>
+                    <button class="goright"> &#8594; </button>
+                </div>
+
+                <div class="logs-list1">
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

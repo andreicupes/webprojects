@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Log</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Delete Log</h1>
+        <p><b>Please use an already existing ID and submit to delete the log to the database.</b></p>
+
+        <form action="deleteLog.php" method="post">
+            <input type="int" name="id" placeholder="ID:"> <br>
+            <div>
+                <button type="submit">Delete Log</button>
+                <button type="reset" onclick="window.location.href='showTable.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="text-center">
+     <h1 class="display-4">Welcome</h1><br /><br /><br />
+    @ViewBag.Error
+    <form method="post" asp-controller="Home" asp-action="Login">
+        <p>Username: 
+        <input type="text" name="username"></p>
+        <p>Password: 
+        <input type="password" name="password"> </p><br>
+        <br>
+        <input class="button" type="submit" value="Login" />
+    </form>
+</div>
