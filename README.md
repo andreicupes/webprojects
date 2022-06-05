@@ -7,15 +7,15 @@ teams JSP
 channelsbackend PHP
 ---------------
 
-*for auctions:
-  *add a bid
-  *update a bid
-  *send a notif when another user adds a bid
+1. for auctions:
+  1. add a bid
+  2. update a bid
+  3. send a notif when another user adds a bid
   
-*for teams:
-  *display all teams
-  *display teams user is part of
-  *assign other players to a team
+* for teams:
+  * display all teams
+  * display teams user is part of
+  * assign other players to a team
   
 *for channels:
   *display channels one is subscribed to
